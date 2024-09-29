@@ -153,7 +153,7 @@ El proyecto no requiere acceso o credenciales específicas, ya que es una aplica
 - Si la autenticación es exitosa, recibirás un token JWT que deberás usar para las solicitudes autenticadas.
 
 ## Estructura del Proyecto.
-- Estructura del proyecto **Climate Weather**
+- Estructura del proyecto **RealmChat**
 
   ```bash
   RealmChat/
