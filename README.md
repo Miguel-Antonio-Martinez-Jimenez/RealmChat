@@ -6,6 +6,13 @@
 ### Descripción General.
 **RealmChat** es una API de mensajería en tiempo real que permite la comunicación fluida entre usuarios a través de un sistema de chat. Esta API está diseñada para facilitar la creación de aplicaciones de mensajería, ofreciendo características robustas para la gestión de usuarios, mensajes, grupos y notificaciones.
 
+[<img src="screenshots/API.png" align="center" width="100%" />](https://miguel-antonio-martinez-jimenez.github.io/RealmChat/)
+
+<div align="center">
+   
+   El proyecto no tiene una vista previa de la API...
+</div>
+
 ## Objetivo.
 El objetivo de **RealmChat** es proporcionar a los desarrolladores una solución integral para implementar capacidades de mensajería en sus aplicaciones, permitiendo la interacción en tiempo real y una experiencia de usuario optimizada.
 
