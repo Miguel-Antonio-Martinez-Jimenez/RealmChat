@@ -102,7 +102,6 @@ La conexión a la base de datos se establece en el archivo de configuración `db
 module.exports = sequelize;
 
 ## Diagrama Entidad-Relacion
-Este proyecto no requiere un sistema de gestion de base de datos.
 <img src="screenshots/DiagramMySQL-APIRealmChat.png" />
 
 ## Acceso o Credenciales.
