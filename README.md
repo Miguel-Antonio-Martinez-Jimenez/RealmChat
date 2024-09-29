@@ -106,7 +106,7 @@ La conexión a la base de datos se establece en el archivo de configuración `db
       logging: false,
     });
 
-module.exports = sequelize;
+    module.exports = sequelize;
 
 ## Diagrama Entidad-Relacion
 <img src="screenshots/DiagramMySQL-APIRealmChat.png" />
