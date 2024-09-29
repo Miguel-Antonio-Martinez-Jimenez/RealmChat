@@ -156,7 +156,7 @@ El proyecto no requiere acceso o credenciales específicas, ya que es una aplica
 - Estructura del proyecto **Climate Weather**
 
   ```bash
-  Climate_Weather/
+  RealmChat/
   │
   ├── config/
   │   └── db.config.js
