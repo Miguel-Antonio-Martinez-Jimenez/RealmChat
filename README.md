@@ -158,13 +158,44 @@ El proyecto no requiere acceso o credenciales específicas, ya que es una aplica
   ```bash
   Climate_Weather/
   │
-  ├── css/
-  │   └── style.css
-  ├── js/
-  │   └── script.js
-  ├── index.html
+  ├── config/
+  │   └── db.config.js
+  ├── controllers/
+  │   ├── auth.controller.js
+  │   ├── contact.controller.js
+  │   ├── group.controller.js
+  │   ├── message.controller.js
+  │   ├── notification.controller.js
+  │   ├── refresh_token.controller.js
+  │   └── user.controller.js
+  ├── middlewares/
+  │   └── verify_token.middleware.js
+  ├── models/
+  │   ├── blocked_user.model.js
+  │   ├── contact.model.js
+  │   ├── group.model.js
+  │   ├── group_members.model.js
+  │   ├── message.model.js
+  │   ├── notification.model.js
+  │   ├── session.model.js
+  │   └── user.model.js
+  ├── routes/
+  │   ├── auth.routes.js
+  │   ├── contact.routes.js
+  │   ├── group.routes.js
+  │   ├── message.routes.js
+  │   ├── notification.routes.js
+  │   └── user.routes.js
+  ├── screenshots/
+  │   ├── API.png
+  │   └── DiagramMySQL-APIRealmChat.png
+  ├── tests/
+  │   └── api.test.js
   ├── LICENSE
-  └── README.md
+  ├── README.md
+  ├── package-lock.json
+  ├── package.json
+  └── server.js
 
 
 ## API.
