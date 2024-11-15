@@ -1,4 +1,3 @@
-const { group } = require('console');
 const Group = require('../models/group.model');
 const GroupMember = require('../models/group_members.model');
 const User = require('../models/user.model');
@@ -42,27 +41,35 @@ exports.getGroupsByUser = async (req, res) =>
 // Crear un nuevo grupo
 exports.createGroup = async (req, res) => 
 {
-    try 
+     try 
     {
         const { name, description } = req.body;
         const admin_id = req.user.id;
-
+    
         if (!name || !description) 
         {
             // 400 Bad Request: Error en la solicitud, parámetros inválidos.
-            return res.status(400).json({ message: 'El nombre y la descripcion del grupo son obligatorios.' });
+            return res.status(400).json({ message: 'El nombre y la descripción del grupo son obligatorios.' });
         }
-
+    
+        // Verificar si ya existe un grupo con el mismo nombre
+        const existingGroup = await Group.findOne({ where: { name } });
+        if (existingGroup) 
+        {
+            // 409 Conflict: Solicitud en conflicto, grupo existente con el mismo nombre.
+            return res.status(409).json({ message: 'Ya existe un grupo con el mismo nombre.' });
+        }
+    
+        // Crear el nuevo grupo
         const group = await Group.create({ name, description, admin_id });
-
-        
+    
         await GroupMember.create(
         {
             group_id: group.id,
             user_id: admin_id,
             added_by: admin_id,
         });
-  
+    
         // 201 Created: Recurso creado exitosamente tras la solicitud.
         res.status(201).json({ message: 'Grupo creado exitosamente.', group });
     } 
@@ -72,7 +79,7 @@ exports.createGroup = async (req, res) =>
         return res.status(500).json({ error: "Se produjo un error en el servidor.", details: error.message });
     }
 };
-
+    
 // Añadir un contacto de un grupo
 exports.addGroupMember = async (req, res) => 
 {
@@ -96,22 +103,13 @@ exports.addGroupMember = async (req, res) =>
         }
         
         // Buscar el usuario por correo electrónico
-        let user = await User.findOne({ where: { email } });
+        const user = await User.findOne({ where: { email } });
         
         // Si no encuentra el usuario, permitir agregar usuarios externos (fuera de los contactos)
         if (!user) 
         {
             // 404 Not Found: Solicitud no encontrada.
-            return res.status(404).json({ message: 'No se encontró un usuario con este correo electrónico. ¿Deseas agregarlo como un usuario externo?' });
-        }
-
-        // Verificar si el usuario está en los contactos
-        const isContact = await Contact.findOne({ where: { user_id: added_by, contact_email: email } });
-        
-        if (!isContact) 
-        {
-            // 200 OK: Solicitud exitosa, datos devueltos correctamente.
-            return res.status(200).json({ message: 'El usuario no está en tus contactos. ¿Deseas agregarlo de todas formas?' });
+            return res.status(404).json({ message: 'No se encontró un usuario con este correo electrónico.' });
         }
 
         // Comprobar si el miembro ya existe en el grupo
@@ -123,6 +121,7 @@ exports.addGroupMember = async (req, res) =>
         }
 
         // Agregar al miembro al grupo
+        console.log(group_id, user.id, added_by );
         await GroupMember.create({ group_id, user_id: user.id, added_by });
 
         // 201 Created: Recurso creado exitosamente tras la solicitud.

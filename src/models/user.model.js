@@ -34,7 +34,7 @@ const User = sequelize.define('users',
   status_message: 
   {
     type: DataTypes.STRING(255),
-    defaultValue: 'Hey there! I am using this chat app',
+    defaultValue: 'Hello! I am using chat API.',
   },
   last_seen: 
   {

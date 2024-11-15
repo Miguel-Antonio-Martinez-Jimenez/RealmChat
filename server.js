@@ -18,6 +18,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/group', groupRoutes);
 
+
 sequelize.sync({ force: false })
 .then(() => 
 {
@@ -26,6 +27,8 @@ sequelize.sync({ force: false })
     require('./src/models/contact.model').sync();
     require('./src/models/group.model').sync();
     require('./src/models/group_members.model').sync();
+    require('./src/models/message.model').sync();
+    require('./src/models/notification.model').sync();
 })
 .catch((error) => 
 {

@@ -13,6 +13,7 @@ const Group = sequelize.define('groups',
     name: 
     {
         type: DataTypes.STRING(100),
+        unique: true,
         allowNull: false,
     },
     description: 
